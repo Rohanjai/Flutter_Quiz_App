@@ -12,25 +12,46 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final questions = const [
     {
-      'questionText': 'What is my Fav Food?',
-      'answers': ['Black', 'Green', 'Blue', 'Red']
+      'questionText': 'What is my Fav Colour?',
+      'answers': [
+        {'text': 'Black', 'score': 10},
+        {'text': 'Green', 'score': 20},
+        {'text': 'Blue', 'score': 50},
+        {'text': 'Red', 'score': 30}
+      ]
     },
     {
       'questionText': 'Whats my fav pet?',
-      'answers': ['Dog', 'Cat', 'Fish', 'Bird']
+      'answers': [
+        {'text': 'Dog', 'score': 50},
+        {'text': 'Cat', 'score': 25},
+        {'text': 'Fish', 'score': 20},
+        {'text': 'Bird', 'score': 20}
+      ]
     },
     {
       'questionText': 'What is my Fav City?',
-      'answers': ['Chennai', 'Torrento', 'NY', 'NJ']
+      'answers': [
+        {'text': 'Chennai', 'score': 50},
+        {'text': 'Torrento', 'score': 30},
+        {'text': 'NY', 'score': 40},
+        {'text': 'NJ', 'score': 20}
+      ]
     },
     {
       'questionText': 'What is my Fav Country?',
-      'answers': ['India', 'Singapore', 'Canada', 'US']
+      'answers': [
+        {'text': 'India', 'score': 50},
+        {'text': 'Singapore', 'score': 30},
+        {'text': 'Canada', 'score': 50},
+        {'text': 'US', 'score': 40}
+      ]
     },
   ];
   var questionInd = 0;
-
-  void answerQuestion() {
+  var totalscore = 0;
+  void answerQuestion(int score) {
+    totalscore += score;
     if (questionInd < questions.length) {
       print('WE Have more questions!');
     } else {
@@ -57,7 +78,7 @@ class _MyAppState extends State<MyApp> {
                 questions: questions,
                 questionInd: questionInd,
               )
-            : Result(),
+            : Result(totalscore),
       ),
     );
   }
