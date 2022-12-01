@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import './question.dart';
-import './answer.dart';
+import './quiz.dart';
+import './result.dart';
 
-// void main(List<String> args) {
-//   runApp(MyApp());
-// }
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
@@ -55,18 +52,12 @@ class _MyAppState extends State<MyApp> {
           title: Text('My First App'),
         ),
         body: questionInd < questions.length
-            ? Column(
-                children: <Widget>[
-                  Question(
-                    questions[questionInd]['questionText'] as String,
-                  ),
-                  ...(questions[questionInd]['answers'] as List<String>)
-                      .map((answer) {
-                    return Answer(answerQuestion, answer);
-                  }).toList()
-                ],
+            ? Quiz(
+                answerQuestion: answerQuestion,
+                questions: questions,
+                questionInd: questionInd,
               )
-            : Center(child: Text('You did it!')),
+            : Result(),
       ),
     );
   }
